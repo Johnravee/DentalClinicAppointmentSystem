@@ -1,0 +1,339 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #3B71CA;
+    --secondary: #9FA6B2;
+    --success: #14A44D;
+    --danger: #DC4C64;
+    --warning: #E4A11B;
+    --info: #54B4D3;
+    --light: #FBFBFB;
+    --dark: #332D2D;
+}
+
+body{
+    overflow: hidden;
+}
+
+header{
+    height: 20%;
+    width: 100%;
+    padding: 10px 30px;
+    display: flex;
+    align-items: center;
+    color: var(--light);
+    background-color: #114D81;
+}
+
+header > a img{
+    height: 100px;
+    width: 100px;
+    margin: 0 30px 0 0;
+}
+
+header > h1{
+    letter-spacing: 1.5px;
+}
+
+main{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    background-color: var(--light);
+}
+
+/* Form input */
+.form-inputs{
+    height: auto;
+    width: 50%;
+   padding: 20px;
+   overflow: auto;
+}
+
+.backBtn{
+    font-size: 3rem;
+    padding:20px;
+}
+
+.backBtn > a{
+color: var(--dark);
+}
+
+#timeSchedText{
+    text-align: center;
+    padding: 5px;
+    letter-spacing: 1px;
+}
+
+
+.scheduleList{
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px -1px rgba(105, 101, 101, 0.75);
+        -webkit-box-shadow: 0px 4px 6px -1px rgba(105, 101, 101, 0.75);
+        -moz-box-shadow: 0px 4px 6px -1px rgba(105, 101, 101, 0.75);
+}
+
+.timeList{
+    display: flex;
+    justify-content: start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+.timeItem{
+    flex-basis: 30%;
+    margin: 10px;
+}
+
+.timeItem > input{
+    height: 200px;
+    width: 100%;
+    accent-color: var(--success);
+    cursor: pointer;
+    
+    
+}
+
+.timeItem > label{
+    position: relative;
+    top: 50%;
+    left: 30%;
+    font-size: 1rem;
+    color: #000;
+    text-align: center;
+    transform: translate(-50%, -50%);
+}
+
+.inputGroup{
+    height: 100%;
+}
+
+.inputGroup div{
+padding: 20px;
+}
+
+.date{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.date > label{
+    padding: 10px 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.date > input{
+    height: 50%;
+    padding: 10px;
+    font-size: 1.2rem;
+    width: 100%;
+}
+
+
+
+
+.appointmentType{
+    display: flex;
+    flex-direction: column;
+}
+
+.appointmentType > label{
+    font-size: 1.5rem;
+    padding: 10px 0;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.appointmentType > select{
+    height: 15%;
+    font-size: 1.2rem;
+    padding: 10px;
+}
+
+
+.Consultants {
+    display: flex;
+    flex-direction: column;
+}
+
+.Consultants>label {
+    font-size: 1.5rem;
+    padding: 10px 0;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.Consultants>select {
+    height: 15%;
+    font-size: 1.2rem;
+    padding: 10px;
+}
+
+
+
+    
+.btn{
+    height: 30%;
+    text-align: center;
+}
+
+#save{
+    padding: 20px;
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+    color: var(--light);
+    background-color: var(--success);
+    width: 50%;
+    cursor: pointer;
+    border: none;
+    border-radius: 15px;
+}
+
+#save:hover{
+    background-color: #18cb60;
+}
+
+
+
+
+#style-11::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #F5F5F5;
+    border-radius: 10px;
+}
+
+#style-11::-webkit-scrollbar {
+    width: 10px;
+    background-color: #F5F5F5;
+}
+
+#style-11::-webkit-scrollbar-thumb {
+    background-color: #3366FF;
+    border-radius: 10px;
+    background-image: -webkit-linear-gradient(0deg,
+            rgba(255, 255, 255, 0.5) 25%,
+            transparent 25%,
+            transparent 50%,
+            rgba(255, 255, 255, 0.5) 50%,
+            rgba(255, 255, 255, 0.5) 75%,
+            transparent 75%,
+            transparent)
+}
+
+
+
+/* MODAL */
+
+.modalScreen{
+    height: 100vh;
+    width: 100%;
+    background-color: #332d2d68;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    z-index: 1;
+    display: none;
+}
+.modal{
+    height: auto;
+    width: 50%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 1;
+    padding: 30px;
+}
+
+.modalClose{
+    align-self: flex-end;
+    width: 5%;
+    background-color: var(--danger);
+    padding: 10px ;
+    border: none;
+    border-radius: 8px;
+    color: var(--light);
+    cursor: pointer;
+}
+
+.modalTittle{
+    text-align: center;
+    opacity: .5;
+    margin: 20px;
+}
+
+.modalInput{
+    display: flex;
+    flex-direction: column;
+}
+
+.modalInput > label{
+    margin: 10px 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.modalInput > input{
+    padding: 10px;
+}
+.modalInput > textarea{
+    resize: none;
+    font-size: 1rem;
+    padding: 20px;
+    letter-spacing: 1px;
+}
+
+.modalSave{
+    text-align: center;
+    margin: 10px 0;
+}
+
+#book {
+    padding: 20px;
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+    color: var(--light);
+    background-color: var(--success);
+    width: 50%;
+    cursor: pointer;
+    border: none;
+    border-radius: 15px;
+}
+
+#book:hover {
+    background-color: #18cb60;
+}
+
+
+/* Banner */
+.banner{
+    height: 100%;
+    width: 50%;
+    background-color: #332D2D;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner > img{
+    height: 300px;
+    width: 300px;
+}

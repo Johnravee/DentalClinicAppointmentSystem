@@ -1,0 +1,17 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --primary: #3B71CA;
+    --secondary : #9FA6B2;
+    --success: #14A44D;
+    --danger: #DC4C64;
+    --warning: #E4A11B;
+    --info: #54B4D3;
+    --light: #FBFBFB;
+    --dark: #332D2D;
+}
+

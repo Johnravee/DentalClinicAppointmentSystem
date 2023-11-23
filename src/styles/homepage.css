@@ -1,0 +1,277 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #3B71CA;
+    --secondary: #9FA6B2;
+    --success: #14A44D;
+    --danger: #DC4C64;
+    --warning: #E4A11B;
+    --info: #54B4D3;
+    --light: #FBFBFB;
+    --dark: #332D2D;
+}
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    background-color: #54b3d333;
+}
+
+header{
+    height: 5%;
+    width: 96%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin: 30px;
+    background-color: var(--light);
+    border-radius: 8px;
+}
+
+.logo a > img{
+    height: 100px;
+    width: 100px;
+}
+
+nav{
+    width: 40%;
+}
+
+nav > ul{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    list-style: none;
+}
+
+nav > ul > a{
+    text-decoration: none;
+    color:  var(--dark);
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+#logInBtn{
+    padding: 10px 20px;
+    background-color: #8FDCF5;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+#logInBtn:hover{
+    background-color: #72d0ef;
+}
+
+
+/* content */
+.headerContent{
+    height: 100vh;
+    width: 96%;
+    background-image: url(../images/bgbaner.png);
+    background-size: cover;
+    margin: 30px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.content-wrapper{
+    display: flex;
+    justify-content: end;
+    flex-direction: column;
+    align-items: end;
+}
+
+#tag{
+    font-size: 5rem;
+    width: 50%;
+    color: #0E3A7C;
+}
+
+#subtag{
+    color: var(--dark);
+    font-size: 2rem;
+    padding: 20px 5% 0 0;
+    width: 50%;
+    align-self: flex-end;
+    color: #0E3A7C;
+}
+
+
+#readMore{
+    background-color: #48CEF8;
+    font-size: 1.5rem;
+    padding: 20px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin: 5% 10% 0 0;
+   
+}
+
+/* About styles */
+.about{
+    height: 100vh;
+    width: 100%;
+    background-color: #ffff;
+}
+
+.sectionTag, .serviceTag, .contactTag{
+    background-color: #54B4D3;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+}
+
+.sectionTag > h2{
+    color: #070939;
+    font-size: 2rem;
+    letter-spacing: 1px;
+}
+
+.about-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    height: 100%;
+}
+
+.about-img{
+    padding: 20px;
+}
+
+.whyUsContent{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+}
+
+.whyUsContent > h3{
+    font-size: 2.5rem;
+    color: var(--dark);
+    margin: 20px 0;
+}
+
+.whyUsContent > p{
+    font-size: 1.5rem;
+    width: 100%;
+    margin: 10px 0;
+}
+
+#appointmentBtn{
+    padding: 20px;
+    background-color: #48CEF8;
+    color: var(--dark);
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    font-weight: bold;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    margin: 40px 0 0;
+}
+
+/* SERVICES */
+
+.services{
+    height: 100vh;
+    width: 100%;
+    background-color: #ffff;
+}
+.services-cards,.contact-cards{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: start;
+    width: 100%;
+    margin: 40px 0 ;
+}
+
+.card,.contact-card{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    width: 20%;
+    height: 100%;
+    background-color: #EAF4F7;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 20px;
+}
+
+.card-tittle > h4{
+    font-size: 1.2rem;
+    text-align: center;
+    width: 100%;
+}
+
+.card-img > img{
+    height: 100px;
+    width: 100px;
+    padding: 20px;
+}
+
+.card-body > p{
+text-align: center;
+padding: 20px;
+font-size: 1rem;
+}
+
+/* COntact */
+
+.contactUs{
+    height: 100vh;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.logoimgContact > img{
+    height: 200px;
+    width: 200px;
+}
+
+
+.cpright{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.cpright > p{
+    font-size: 1.2rem;
+    opacity: .5;
+}
+
+.cpright > img{
+    height: 100px;
+    width: 120px;
+    opacity: .5;
+}
+
+
+
+
+
