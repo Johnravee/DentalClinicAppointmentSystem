@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logging in..</title>
+    <title>Loading....</title>
     <link rel="shortcut icon" href="/CLINICAPPOINTMENTSYS/src/images/logo.png" type="image/x-icon">
 </head>
 
@@ -239,8 +239,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 function success() {
                 loader.classList.add('success');
                 }
-                setTimeout(() => success(), 3000);
-                setTimeout(() => window.location.href = '/CLINICAPPOINTMENTSYS/pages/userDashboard.php', 5000);
+                setTimeout(() => success(), 1000);
+                setTimeout(() => window.location.href = '/CLINICAPPOINTMENTSYS/pages/userDashboard.php', 2300);
             </script>";
             }
             else

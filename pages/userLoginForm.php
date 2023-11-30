@@ -51,7 +51,7 @@ if(isset($_SESSION['userID'])){
                     <input type="checkbox" id="showPass" />
                     <label for="showPass">Show password</label>
                 </div>
-                <a id="forgot" href="#">Forgot password?</a>
+                <a id="forgot" href="forgotPassword.php">Forgot password?</a>
 
                 <button type="submit" id="submit">LOGIN</button>
 

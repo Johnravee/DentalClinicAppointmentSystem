@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creating account..</title>
+    <title>Loading....</title>
     <link rel="shortcut icon" href="/CLINICAPPOINTMENTSYS/src/images/logo.png" type="image/x-icon">
 </head>
 
@@ -232,8 +232,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $address = strtoupper(htmlspecialchars($_POST['address']));
         $birthDate = strtoupper(htmlspecialchars($_POST['birthDate']));
         $employeeID = strtoupper(htmlspecialchars($_POST['employeeID']));
-        $password = strtoupper(htmlspecialchars($_POST['password']));
-        $confirmPass = strtoupper(htmlspecialchars($_POST['cpass']));
+        $password = htmlspecialchars($_POST['password']);
+        $confirmPass = htmlspecialchars($_POST['cpass']);
 
         //TableName
         $table = 'adminaccounts';
@@ -259,8 +259,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 function success() {
                 loader.classList.add('success');
                 }
-                setTimeout(() => success(), 3000);
-                setTimeout(() => window.location.href = '/CLINICAPPOINTMENTSYS/pages/adminLoginForm.php', 5000);
+                setTimeout(() => success(), 1000);
+                setTimeout(() => window.location.href = '/CLINICAPPOINTMENTSYS/pages/adminLoginForm.php', 2300);
             </script>";
             }
             else
@@ -291,8 +291,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $gender = strtoupper(htmlspecialchars($_POST['gender']));
         $address = strtoupper(htmlspecialchars($_POST['address']));
         $birthDate = strtoupper(htmlspecialchars($_POST['birthDate']));
-        $password = strtoupper(htmlspecialchars($_POST['password']));
-        $confirmPass = strtoupper(htmlspecialchars($_POST['cpass']));
+        $password = htmlspecialchars($_POST['password']);
+        $confirmPass = htmlspecialchars($_POST['cpass']);
 
         //TableName
         $table = 'useraccounts';

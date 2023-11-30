@@ -88,3 +88,48 @@ tr.main-heading {
     background-color: var(--dark);
     color: white;
 }
+
+ .search-container{
+    height: 5%;
+    width: 100%;
+    padding: 10px;
+    background-color: var(--secondary);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.search-container > .tit > h2{
+    color: var(--light);
+    font-size: 2rem;
+    letter-spacing: 1px;
+}
+
+.search-container > input{
+    padding: 20px;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+}
+.tit{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.backBtn > a{
+    font-size: 2rem;
+    color: var(--light);
+    margin: 0 20px 0 0;
+}
+
+.backBtn > a{
+    font-size: 2rem;
+    color: var(--light);
+    margin: 0 20px 0 0;
+    transition: .5s;
+}
+
+a:hover{
+    color: var(--dark);
+}

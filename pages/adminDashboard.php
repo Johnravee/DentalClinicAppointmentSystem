@@ -1,11 +1,14 @@
 <?php
-session_start();
 require_once('../database/connection/database.php');
+require_once('../database/models/queryClass.php');
 
 //CHECK IF THE SSESSION IS SET
 if(!isset($_SESSION['adminID'])){
     header("Location: adminLoginForm.php");
+    return;
 }
+    $queryMethods = new selectQueries($conn);
+    $rows = $queryMethods->getMyAccountDetails('adminaccounts', $_SESSION['adminID']);
 
 try{
     $appointmentType = array();
@@ -76,7 +79,7 @@ try{
                 <h1>OPTIONS</h1>
 
                 <div class="btns">
-                    <a href="#">
+                    <a href="approval_appointmentAdmin.php">
                         <button>APPROVAL</button>
                     </a>
 
@@ -93,7 +96,7 @@ try{
                     </a>
                 </div>
 
-                <a href="#" id="gear"><button><i class="bi bi-gear"></i></button></a>
+                <a href="adminProfile.php" id="gear"><button><i class="bi bi-gear"></i></button></a>
             </div>
         </aside>
 
@@ -106,9 +109,37 @@ try{
 
                 <div class="profileImg">
                     <h1>
-                        <?php echo $_SESSION['firstname']. " " .$_SESSION['surname']?>
+                        <?php echo $rows['firstName'] . " " . $rows['surName'] ?>
                     </h1>
-                    <img src="../src/images/Profile.png" alt="profile picture">
+                    <!-- GET THE PROFILE IMAGE FROM USERACCOUNTS -->
+                    <?php
+                     $profileImage =  $rows['profileImage'];
+                    //  file information storage
+                     $openImageInfo = finfo_open(FILEINFO_MIME);
+                    
+                     if($openImageInfo){
+                        $imageExtensionType = finfo_buffer($openImageInfo,$profileImage);
+                        $getTheMimeType = strtok($imageExtensionType, ';');
+
+                        switch ($getTheMimeType) {
+                        case "image/jpeg":
+                            echo '<img  src="data:image/jpeg;base64,'.base64_encode($profileImage) . '" />';
+                            break;
+
+                        case "image/png":
+                            echo '<img  src="data:image/png;base64,'.base64_encode($profileImage) . '" />';
+                            break;
+
+                        case "image/jpg":
+                            echo '<img  src="data:image/jpg;base64,'.base64_encode($profileImage) . '"/>';
+                            break;
+
+                        default:
+                            echo '<img  src="../src/images/Profile.png"/>';
+                            break;
+                        }
+                     }
+                    ?>
                 </div>
             </div>
 

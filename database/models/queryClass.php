@@ -58,6 +58,16 @@ class insertQueries{
 
     }
 
+    //SEND NOTIFICATION TO THE USER
+    public function notificationSender($customer_ID, $from, $message, $subject){
+        $notificationInsertData = "INSERT INTO messages (customer_ID, fromm, messages, subjectt, date_time) VALUES (?, ?, ?, ?, NOW())";
+$query = $this->db->prepare($notificationInsertData);
+$query->bind_param('isss', $customer_ID, $from, $message, $subject);
+        if($query->execute()){
+            return true;
+        }
+
+    }
 
 
 
@@ -91,9 +101,6 @@ class selectQueries extends insertQueries{
 
             if($verifyPassword === true){
                 $_SESSION['userID'] = $row['profile_ID'];
-                $_SESSION['firstname'] = $row['firstName'];
-                $_SESSION['surname'] = $row['surName'];
-                
                 return true;
             }
        }catch(Exception){
@@ -117,9 +124,6 @@ class selectQueries extends insertQueries{
 
             if($verifyPassword === true){
                 $_SESSION['adminID'] = $row['adProfile_ID'];
-                $_SESSION['firstname'] = $row['firstName'];
-                $_SESSION['surname'] = $row['surName'];
-                
                 return true;
             }
        }catch(Exception){
@@ -128,7 +132,7 @@ class selectQueries extends insertQueries{
     }
 
     //METHOD TO Get the admins message to the clients
-   public function getMessages($userID){
+    public function getMessages($userID){
         try{
             $selectMessage = "SELECT * FROM messages WHERE customer_ID = ? ";
             $query = $this->db->prepare($selectMessage);
@@ -186,7 +190,9 @@ class selectQueries extends insertQueries{
 
     // METHOD TO GET PENDING APPOINMENTS
     public function getPendingAppointments(){
-        $selectApprovedAppoinments = "SELECT * FROM appointments WHERE Statuss = 'Pending' ORDER BY datee ASC";
+        try{
+          
+        $selectApprovedAppoinments = "SELECT * FROM useraccounts RIGHT JOIN appointments ON appointments.customer_ID = useraccounts.profile_ID WHERE Statuss = 'Pending' ORDER BY datee ASC";
         $query = $this->db->query($selectApprovedAppoinments);
         $result = array();
 
@@ -195,10 +201,209 @@ class selectQueries extends insertQueries{
             $result[] = $row;
 
         }
+
         return $result;
+        }catch(Exception){
+            throw new Exception("ERROR GETTING APPOINTMENTS");
+        }
         
        
-    } 
+    }
+    
+
+  
+
+    //getAccountDetails
+    public function getMyAccountDetails($tableName,$tableID){
+        
+        try{
+            if($tableName === 'useraccounts'){
+            $selectMyDetails = "SELECT * FROM $tableName WHERE profile_ID = ".$tableID."";
+            $query = $this->db->query($selectMyDetails);
+            return $query->fetch_assoc();
+        }else{
+            $selectMyDetails = "SELECT * FROM $tableName WHERE adProfile_ID = $tableID";
+             $query = $this->db->query($selectMyDetails);
+            return $query->fetch_assoc();
+        }
+        }catch(Exception){
+            throw new Exception("Error GETTING ACCOUNT");
+        }
+           
+    
+       
+    }
+
+
+    //GET HISTORY APPOINTMENTS OF USER
+    public function getHistoryAppointmentsOfUser($userID){
+        try{
+            $selectAllDatas = "SELECT * FROM appointments WHERE customer_ID = $userID ORDER BY customer_ID";
+            $query = $this->db->query($selectAllDatas);
+            $result = array();
+
+
+        while($row = $query->fetch_assoc()){
+            $result[] = $row;
+
+        }
+        return $result;
+    }catch(Exception){
+            throw new Exception("ERROR GETTING APPOINTMENTS");
+        }
+    }
+    
+
+    public function getPendingAppointmentsOfUser($userID){
+        try{
+            $selectedDatas = "SELECT * FROM appointments WHERE Statuss = 'Pending' AND customer_ID = $userID  ORDER BY datee";
+            $query = $this->db->query($selectedDatas);
+            $result = array();
+
+
+        while($row = $query->fetch_assoc()){
+            $result[] = $row;
+
+        }
+        return $result;
+    }catch(Exception){
+            throw new Exception("ERROR GETTING APPOINTMENTS");
+        }
+    }
+
+
+
+    // GET EMAIL
+    public function getEmails($email){
+        try{
+            $getEmailData = "SELECT email FROM (SELECT email FROM useraccounts UNION SELECT email FROM adminaccounts) AS emails WHERE email = ?";
+            $query = $this->db->prepare($getEmailData);
+            // Bind the parameter
+            $query->bind_param('s', $email);
+
+                if ($query->execute()) {
+                        $_SESSION['email'] = $email;
+                        return true;
+                    }
+
+                    }catch(Exception $e){
+                        echo $e->getMessage();
+                    }
+                }   
+            
+
+
+            }
+
+
+
+
+
+// UPDATE CLASS
+class updateQuries extends insertQueries{
+     public function __construct($connection){
+        parent::__construct($connection);
+        
+    }
+
+
+    //UPDATE USER INFORMATION
+    public function updateUserProfile($userID, $profileImg, $firstName, $middleName, $surName, $contact, $birthDate, $address){
+        try{
+            
+
+            // IF NOT EMPTY RUN THE STATEMENT
+            if(!empty($profileImg)){
+                $updateUserProfile = "UPDATE useraccounts SET profileImage = '$profileImg', firstName = '$firstName', middleName = '$middleName', surName = '$surName', contact = '$contact', birthDate = '$birthDate', addresss = '$address' WHERE profile_ID = $userID";
+                $query = $this->db->query($updateUserProfile);
+                if($query){
+                    return true;
+                }
+               
+                
+            }else{
+                $updateUserProfile = "UPDATE useraccounts SET firstName = ?, middleName = ?, surName = ?, contact = ?, birthDate = ?, addresss = ? WHERE profile_ID = ?";
+                $query = $this->db->prepare($updateUserProfile);
+                $query->bind_param('ssssssi', $firstName, $middleName, $surName, $contact, $birthDate, $address, $userID);
+                if($query->execute()){
+                    return true;
+                }
+            }
+
+
+            
+        }catch(Exception){
+            throw new Exception("FAILED TO UPDATE YOUR PROFILE");
+        }
+
+
+    }
+
+     //UPDATE ADMIN INFORMATION
+    public function updateAdminProfile($adminID, $email, $profileImg, $firstName, $middleName, $surName, $contact, $birthDate, $address){
+
+         // IF NOT EMPTY RUN THE STATEMENT
+            if(!empty($profileImg)){
+                $updateAdminProfile = "UPDATE adminaccounts SET email = '$email' , profileImage = '$profileImg', firstName = '$firstName', middleName = '$middleName', surName = '$surName', contact = '$contact', birthDate = '$birthDate', addresss = '$address' WHERE adProfile_ID = $adminID";
+                $query = $this->db->query($updateAdminProfile);
+                if($query){
+                    return true;
+                }
+            }else{
+                $updateAdminProfile = "UPDATE adminaccounts SET email = ?, firstName = ?, middleName = ?, surName = ?, contact = ?, birthDate = ?, addresss = ? WHERE adProfile_ID   = ?";
+                $query = $this->db->prepare($updateAdminProfile);
+                $query->bind_param('sssssssi',$email, $firstName, $middleName, $surName, $contact, $birthDate, $address, $adminID);
+               if($query->execute()){
+                    return true;
+               }
+            }
+        try{
+
+        }catch(Exception){
+            throw new Exception("ERROR UPDATING DETAILS");
+        }
+    }
+
+    //UPDATE APPOINTMENT STATUSS
+    public function updateAppointmentStatus($appointmentID, $Status){
+        $appointmentUpdate = "UPDATE appointments SET Statuss = '$Status' WHERE appointment_ID = '$appointmentID'";
+        $query = $this->db->query($appointmentUpdate);
+
+        if($query){
+            return true;
+        }
+    }
+
+
+    public function updatePassword($newPassWord){
+        try{
+            $email = $_SESSION['email'];
+            $updateUserPasswordData = "UPDATE useraccounts SET passwords = ? WHERE email = ?";
+            $query1 = $this->db->prepare($updateUserPasswordData);
+            $query1->bind_param('ss', $newPassWord, $email);
+            $query1->execute();
+        if($query1->affected_rows > 0){
+            echo "<script>alert('YOUR PASSWORD IS UPDATED!')</script>";
+            session_start();
+            session_destroy();
+            session_unset();
+            return true;
+
+        }else{
+            $updateAdminPasswordData = "UPDATE adminaccounts SET passwords = ? WHERE email = ?";
+            $query2 = $this->db->prepare($updateAdminPasswordData);
+            $query2->bind_param('ss', $newPassWord, $email);
+            if($query2->execute()){
+                echo "<script>alert('YOUR PASSWORD IS UPDATED!')</script>";
+                session_destroy();
+                session_unset();        
+                return true;
+            }
+        }
+        }catch(Exception){
+            throw new Exception("UPDATING FAILED");
+        }
+    }
 
 }
 

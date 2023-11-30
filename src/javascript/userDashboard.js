@@ -18,6 +18,19 @@ messageBtns.forEach((messageBtn, index) => {
   subjectTittle.innerHTML === "REJECTED" ? 
     subjectTittle.style.color = "#d9534f" :  subjectTittle.style.color = "#5cb85c";
 })
+
+
+messageBtn.addEventListener('click', ()=>{
+    messageBodys.forEach((messageBody, messageBodyIndex) =>{
+      index === messageBodyIndex ? 
+        messageBody.classList.toggle("messageBodyToggler")
+       : 
+        messageBody.classList.remove('messageBodyToggler')
+      
+
+      
+    })
+  });
 })
 
 
@@ -38,17 +51,7 @@ function getMessageLength(){
 
 
   // SHOW FULL DETAILS OF MESSAGE IF CLICK THE BOX
-  messageBtn.addEventListener('click', ()=>{
-    messageBodys.forEach((messageBody, messageBodyIndex) =>{
-      index === messageBodyIndex ? 
-        messageBody.classList.toggle("messageBodyToggler")
-       : 
-        messageBody.classList.remove('messageBodyToggler')
-      
-
-      
-    })
-  });
+  
 });
 
 

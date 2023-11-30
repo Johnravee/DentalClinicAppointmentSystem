@@ -27,7 +27,7 @@ $queryMethods = new selectQueries($conn);
     <link rel="stylesheet" href="../src/styles/admincancelledappointment.css?v=<?php echo time() ?>">
 
     <!-- JS -->
-    <script defer src="../src/javascript/StatusChecker.js"></script>
+    <script defer src="../src/javascript/StatusChecker.js?v=<?php echo time() ?>"></script>
     <!-- CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 </head>
@@ -39,8 +39,15 @@ $queryMethods = new selectQueries($conn);
     </header>
 
     <main>
-        <div class="backBtn">
-            <a href="adminDashboard.php"><i class="bi bi-arrow-left-circle"></i></a>
+        <div class="search-container">
+            <div class="tit">
+                <h2>Search appointment</h2>
+                <div class="backBtn">
+                    <a href="adminDashboard.php"><i class="bi bi-arrow-left-circle"></i></a>
+                </div>
+            </div>
+
+            <input type="text" id="searchInput" placeholder="Search appointments...">
         </div>
 
         <div class="tableContent">
@@ -63,7 +70,7 @@ $queryMethods = new selectQueries($conn);
              foreach ($selectedData as $row) {
                     echo "<tr>";
                     echo "<td>" . $row['datee'] . "</td>";
-                    echo "<td>" . $row['transactionNumber'] . "</td>";
+                    echo "<td class='transactionNumbers'>" . $row['transactionNumber'] . "</td>";
                     echo "<td>" . $row['Timee'] . "</td>";
                     echo "<td>" . $row['Consultant'] . "</td>";
                     echo "<td>" . $row['appointmentType'] . "</td>";

@@ -3,12 +3,17 @@
 require_once("../database/models/queryClass.php");
 require_once('../database/connection/database.php');
 $queryMethods = new selectQueries($conn);
+$updateQueryMethods = new updateQuries($conn);
 $userID = $_SESSION['userID'];
     // CHECK IF SESSION IS SET 
     //Prevent redirecting to this page for those who didn't logged in
     if(!isset($_SESSION['userID'])){
         header("Location: userLoginForm.php");
+        return;
     }
+
+    $rows = $queryMethods->getMyAccountDetails('useraccounts',$userID);
+
 
 
 ?>
@@ -37,38 +42,45 @@ $userID = $_SESSION['userID'];
     <main>
         <aside class="sideBar">
             <div class="profile">
-                <img src="../src/images/Profile.png" alt="profile picture" />
-                <h3 id="profileName"><?php echo $_SESSION['firstname'] . " " . $_SESSION['surname'];?> </h3>
+                <!-- GET THE PROFILE IMAGE FROM USERACCOUNTS -->
+                <?php
+                     $profileImage =  $rows['profileImage'];
+                    //  file information storage
+                     $openImageInfo = finfo_open(FILEINFO_MIME);
+                    
+                     if($openImageInfo){
+                        $imageExtensionType = finfo_buffer($openImageInfo,$profileImage);
+                        $getTheMimeType = strtok($imageExtensionType, ';');
+
+                        switch ($getTheMimeType) {
+                        case "image/jpeg":
+                            echo '<img  src="data:image/jpeg;base64,'.base64_encode($profileImage) . '" />';
+                            break;
+
+                        case "image/png":
+                            echo '<img  src="data:image/png;base64,'.base64_encode($profileImage) . '" />';
+                            break;
+
+                        case "image/jpg":
+                            echo '<img  src="data:image/jpg;base64,'.base64_encode($profileImage) . '"/>';
+                            break;
+
+                        default:
+                            echo '<img  src="../src/images/Profile.png"/>';
+                            break;
+                        }
+                     }
+                    ?>
+                <h3 id="profileName"><?php echo $rows['firstName'] . " " . $rows['surName']?> </h3>
             </div>
 
             <div class="navBtn">
-                <a href="#">
+                <a href="userProfile.php">
                     <button type="button">
                         <i class="bi bi-person-lines-fill"></i>
                         <span>My profile</span>
                     </button>
                 </a>
-
-                <a href="#">
-                    <button type="button">
-                        <i class="bi bi-calendar-week-fill"></i>
-                        <span>Appoinments</span>
-                    </button>
-                </a>
-
-                <a href="#">
-                    <button type="button">
-                        <i class="bi bi-gear-fill"></i>
-                        <span>Settings</span>
-                    </button>
-                </a>
-            </div>
-
-            <div class="logout">
-                <a href="logOut.php">
-                    <button id="logOut">Log out</button>
-                </a>
-            </div>
         </aside>
 
         <section class="contentContainer">
@@ -93,10 +105,10 @@ $userID = $_SESSION['userID'];
                         if (!empty($messages)) {
                             foreach ($messages as $message) {
                                 echo '<div class="message">';
-                                echo '<button class="subject"><span class="subjectTittle" style="text-transform:uppercase;">' . $message['subject'] . '</span> <i class="bi bi-envelope-fill" id="envelop"></i></button>';
+                                echo '<button class="subject"><span class="subjectTittle" style="text-transform:uppercase;">' . $message['subjectt'] . '</span> <i class="bi bi-envelope-fill" id="envelop"></i></button>';
                                 echo '<div class="messageBody">';
-                                echo '<p id="from">From: ' . $message['from'] . '</p>';
-                                echo '<p id="letter">' . $message['message'] . '</p>';
+                                echo '<p id="from">From: ' . $message['fromm'] . '</p>';
+                                echo '<p id="letter">' . $message['messages'] . '</p>';
                                 echo '<p id="dateTime">' . $message['date_time'] . '</p>';
                                 echo '</div>';
                                 echo '</div>';
@@ -118,14 +130,14 @@ $userID = $_SESSION['userID'];
                         </button>
                     </a>
 
-                    <a href="#">
+                    <a href="userPendingAppointments.php">
                         <button id="midBtn">
                             <i class="bi bi-arrow-clockwise"></i>
                             <span>Pending appointments</span>
                         </button>
                     </a>
 
-                    <a href="#">
+                    <a href="userAppointmentHistory.php">
                         <button id="endBtn">
                             <i class="bi bi-clipboard2"></i>
                             <span>History</span>

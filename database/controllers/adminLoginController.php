@@ -237,8 +237,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 function success() {
                 loader.classList.add('success');
                 }
-                setTimeout(() => success(), 3000);
-                setTimeout(() => window.location.href = '/CLINICAPPOINTMENTSYS/pages/adminDashboard.php', 5000);
+                setTimeout(() => success(), 1000);
+                setTimeout(() => window.location.href = '/CLINICAPPOINTMENTSYS/pages/adminDashboard.php', 2300);
             </script>";
             }else{
                  echo

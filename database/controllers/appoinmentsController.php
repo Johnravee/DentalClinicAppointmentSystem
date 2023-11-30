@@ -241,8 +241,8 @@ $queryMethods = new insertQueries($conn);
                 function success() {
                 loader.classList.add('success');
                 }
-                setTimeout(() => success(), 3000);
-                setTimeout(() => window.location.href = '/CLINICAPPOINTMENTSYS/pages/userAppointmentForm.php', 5000);
+                setTimeout(() => success(), 1000);
+                setTimeout(() => window.location.href = '/CLINICAPPOINTMENTSYS/pages/userAppointmentForm.php', 2300);
             </script>";
             
             }else{
@@ -252,8 +252,8 @@ $queryMethods = new insertQueries($conn);
                 function fail() {
                 loader.classList.add('fail');
                 }
-                setTimeout(() => fail(), 3000);
-                setTimeout(() => window.location.href = '/CLINICAPPOINTMENTSYS/pages/userAppointmentForm.php', 5000);
+                setTimeout(() => fail(), 2000);
+                setTimeout(() => window.location.href = '/CLINICAPPOINTMENTSYS/pages/userAppointmentForm.php', 2000);
             </script>";
             }
 

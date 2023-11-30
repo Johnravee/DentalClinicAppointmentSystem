@@ -76,7 +76,7 @@
                         If you have a problem with your teeth, let us know! We are always more than happy to help.
                     </p>
 
-                    <a href="#">
+                    <a href="userAppointmentForm.php">
                         <button id="appointmentBtn">
                             Make an appointment
                         </button>
