@@ -28,30 +28,15 @@ try{
         }
     }
 
-    //GET the total pending status in the table
-    $stmt2 = "SELECT COUNT(Statuss) AS statusCounts FROM appointments WHERE Statuss = 'Pending'";
-    $query2 = $conn->query($stmt2);
-    $resultQuery2 = $query2->fetch_assoc();
-    $pedingStatusCounts = $resultQuery2['statusCounts'];
-
-    //GET the total cancelled status in the table
-    $stmt3 = "SELECT COUNT(Statuss) AS statusCounts FROM appointments WHERE Statuss = 'Cancelled'";
-    $query3 = $conn->query($stmt3);
-    $resultQuery3 = $query3->fetch_assoc();
-    $cancelledStatusCounts = $resultQuery3['statusCounts'];
-
-    //Get the total approved status in the table
-    $stmt4 = "SELECT COUNT(Statuss) AS statusCounts FROM appointments WHERE Statuss = 'Approved'";
-    $query4 = $conn->query($stmt4);
-    $resultQuery4 = $query4->fetch_assoc();
-    $approvedStatusCounts = $resultQuery4['statusCounts']; 
-
-    
-
-    
+    $cancelledAppointmentCounts = $queryMethods->getAllStatusCounts('Cancelled');
+    $pendingAppointmentCounts = $queryMethods->getAllStatusCounts('Pending');
+    $approvedAppointmentCounts = $queryMethods->getAllStatusCounts('Approved');
 }catch(Exception){
     throw new Exception("FAILED BINDING COLUMNS");
 }
+
+
+
 
 ?>
 
@@ -66,6 +51,10 @@ try{
 
     <!-- CSS -->
     <link rel="stylesheet" href="../src/styles/adminDashboard.css?v=<?php echo time() ?>">
+
+    <!-- JS -->
+    <script defer src="../src/javascript/userDashboard.js?v=<?php echo time() ?>"></script>
+
     <!-- CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -80,6 +69,9 @@ try{
 
                 <div class="btns">
                     <a href="approval_appointmentAdmin.php">
+                        <p id="apptNotif">
+                            <?php  echo $pendingAppointmentCounts ?>
+                        </p>
                         <button>APPROVAL</button>
                     </a>
 
@@ -148,7 +140,7 @@ try{
                     <h4><i class="bi bi-clipboard2-x-fill"></i></h4>
                     <div class="label">
                         <h2>Cancelled Appoinments</h2>
-                        <h1><?php echo $cancelledStatusCounts ?></h1>
+                        <h1><?php echo $cancelledAppointmentCounts ?></h1>
                     </div>
                 </div>
 
@@ -156,7 +148,7 @@ try{
                     <h4 style="color: #332D2D;"><i class="bi bi-hourglass-split"></i></h4>
                     <div class="label">
                         <h2>Pending Appoinments</h2>
-                        <h1><?php echo $pedingStatusCounts ?></h1>
+                        <h1><?php echo $pendingAppointmentCounts ?></h1>
                     </div>
                 </div>
 
@@ -164,7 +156,7 @@ try{
                     <h4><i class="bi bi-clipboard-check-fill"></i></h4>
                     <div class="label">
                         <h2>APPROVED Appoinments</h2>
-                        <h1><?php echo $approvedStatusCounts ?></h1>
+                        <h1><?php echo $approvedAppointmentCounts ?></h1>
                     </div>
                 </div>
             </div>

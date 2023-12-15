@@ -217,9 +217,6 @@
 require_once('../models/queryClass.php');
 require_once("../connection/database.php");
 
-
-
-
 $queryMethods = new selectQueries($conn);
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -229,18 +226,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $password = htmlspecialchars($_POST['password']);
 
 
-        $isSuccess=  $queryMethods->userLogIn($email, $password);
+        $isSuccess =  $queryMethods->userLogIn($email, $password);
             
-            if($isSuccess === true)
+            if($isSuccess)
             {
                   echo
             "<script>
                const loader = document.querySelector('.loader');
-                function success() {
-                loader.classList.add('success');
-                }
-                setTimeout(() => success(), 1000);
-                setTimeout(() => window.location.href = '/CLINICAPPOINTMENTSYS/pages/userDashboard.php', 2300);
+                    loader.classList.add('success');
+                    window.location.href = '/CLINICAPPOINTMENTSYS/pages/userDashboard.php';
             </script>";
             }
             else
@@ -248,11 +242,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                  echo
             "<script>
                const loader = document.querySelector('.loader');
-                function fail() {
-                loader.classList.add('fail');
-                }
-                setTimeout(() => fail(), 3000);
-                setTimeout(() => window.location.href = '/CLINICAPPOINTMENTSYS/pages/userLoginForm.php', 5000);
+                    loader.classList.add('fail');
+                    window.location.href = '/CLINICAPPOINTMENTSYS/pages/userLoginForm.php';
             </script>";
             }
     }catch(Exception $e){

@@ -192,7 +192,12 @@ class selectQueries extends insertQueries{
     public function getPendingAppointments(){
         try{
           
-        $selectApprovedAppoinments = "SELECT * FROM useraccounts RIGHT JOIN appointments ON appointments.customer_ID = useraccounts.profile_ID WHERE Statuss = 'Pending' ORDER BY datee ASC";
+        $selectApprovedAppoinments = "SELECT * 
+FROM useraccounts 
+RIGHT JOIN appointments ON appointments.customer_ID = useraccounts.profile_ID 
+WHERE Statuss = 'Pending' 
+ORDER BY appointments.datee; 
+";
         $query = $this->db->query($selectApprovedAppoinments);
         $result = array();
 
@@ -272,6 +277,20 @@ class selectQueries extends insertQueries{
     }
 
 
+    // GET THE STATUS OF ALL APPOINMENTS
+    public function getAllStatusCounts($statsOfAppointment){
+    
+       try{
+         $stmt = "SELECT COUNT(Statuss) AS statusCounts FROM appointments WHERE Statuss = '$statsOfAppointment'";
+        $query = $this->db->query($stmt);
+        $resultQuery = $query->fetch_assoc();
+        $pendingStatusCounts = $resultQuery['statusCounts'];
+
+        return $pendingStatusCounts;
+       }catch(Exception){
+        throw new Exception("Error Countings");
+       }
+    }
 
     // GET EMAIL
     public function getEmails($email){
@@ -407,6 +426,37 @@ class updateQuries extends insertQueries{
 
 }
 
+
+class deleteQueries extends insertQueries{
+
+    public function __construct($connection){
+        parent::__construct($connection);
+    }
+
+
+    public function deleteData($columnName ,$primaryId, $foreignID, $table){
+        
+        try{
+            if($foreignID){
+                $stmt = "DELETE FROM $table WHERE $columnName = $foreignID";
+                $query = $this->db->query($stmt);
+
+                if($query) return true;
+
+
+            }else if($foreignID === null){
+                $stmt = "DELETE FROM $table WHERE $columnName = $primaryId";
+                $query = $this->db->query($stmt);
+
+                 if($query) return true;
+            }
+        }catch(Exception $e){
+            echo $e->getMessage();
+        }
+
+
+    }
+}
 
 
 

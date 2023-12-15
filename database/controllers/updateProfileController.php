@@ -53,7 +53,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             if($_FILES['profileImg']['error'] === 0){
                 $image = addslashes(file_get_contents($_FILES['profileImg']['tmp_name']));
-              $isSuccess = $queryMethods->updateAdminProfile($adminProfileID, $email, $image, $firstName, $middleName, $surName, $contact, $birthDate, $address);
+                $isSuccess = $queryMethods->updateAdminProfile($adminProfileID, $email, $image, $firstName, $middleName, $surName, $contact, $birthDate, $address);
                 
               if($isSuccess){
                 $_SESSION['firstname'] = $firstName;

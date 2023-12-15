@@ -35,7 +35,7 @@ if(!isset($_SESSION['userID'])){
             </div>
         </div>
 
-        <input type="text" id="searchInput" placeholder="Search appointments...">
+        <input type="text" id="searchInput" placeholder="Transaction #">
     </div>
 
     <div class="container">

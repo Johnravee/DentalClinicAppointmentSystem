@@ -37,6 +37,7 @@ header > a img{
 
 header > h1{
     letter-spacing: 1.5px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 main{
@@ -69,6 +70,8 @@ color: var(--dark);
     text-align: center;
     padding: 5px;
     letter-spacing: 1px;
+    font-size:2rem;
+    font-family: sans-serif;
 }
 
 
@@ -108,9 +111,6 @@ color: var(--dark);
 }
 
 
-.timeItem:hover{
-   background-color: var(--success);
-}
 
 .timeItem > label{
     position: relative;

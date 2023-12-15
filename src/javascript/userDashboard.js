@@ -1,4 +1,4 @@
-const messages = document.querySelector('.messages');
+const mails = document.querySelector('.mails');
 const notification = document.querySelector('#notification');
 const email = document.querySelector("#email");
 const messageBtns = document.querySelectorAll('.subject');
@@ -14,10 +14,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
    // CHECK THE TEXT OF THE BOX
 messageBtns.forEach((messageBtn, index) => {
 
-  subjectTittles.forEach(subjectTittle =>{
-  subjectTittle.innerHTML === "REJECTED" ? 
-    subjectTittle.style.color = "#d9534f" :  subjectTittle.style.color = "#5cb85c";
-})
 
 
 messageBtn.addEventListener('click', ()=>{
@@ -36,23 +32,39 @@ messageBtn.addEventListener('click', ()=>{
 
 //Toggle notification box
 email.addEventListener('click', ()=>{
-    messages.classList.toggle("toggleMessages");
+    document.querySelector('.messages').classList.toggle("toggleMessages");
+
 })
+
+document.querySelector('#closeMessageModal').addEventListener('click', (e)=>{
+  document.querySelector('.messages').classList.remove("toggleMessages");
+})
+
+console.log(mails.children.length );
 
 //function to count messages 
 function getMessageLength(){
-  if(messages.children.length > 1){
+  if(mails.children.length >= 1){
             notification.style.display = "inline";
-            notification.innerHTML = messages.children.length - 1;
-        
+            notification.innerHTML = mails.children.length;
+            document.querySelector("#noMessageText").style.display = 'none';
+            document.querySelector("#deleteMessages").style.display = 'block';
+      }else{
+        document.querySelector("#noMessageText").style.display = 'block';
+        document.querySelector("#deleteMessages").style.display = 'none';
       }
 }
 
 
 
-  // SHOW FULL DETAILS OF MESSAGE IF CLICK THE BOX
+
   
 });
+
+document.querySelector('#deleteMessages').addEventListener('click', ()=> {
+    document.querySelector('.deleteForm').submit();
+});
+
 
 
 

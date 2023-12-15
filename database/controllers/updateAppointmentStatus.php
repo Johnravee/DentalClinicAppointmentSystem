@@ -226,10 +226,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         $appointmentID = $_POST['appoinmentID'];
         $customer_ID = $_POST['customer_ID'];
         $date = $_POST['date'];
+        $transactionNumber = $_POST['transactionNumber'];
         
         $messageToCustomer = "
         I trust this message finds you well. I wanted to express my gratitude for your interest and patience.
-        I'm pleased to confirm that your requested/appointment proposed for ".$date." has been approved.
+        I'm pleased to confirm that your requested/appointment proposed for ". $date ." and transaction number ". $transactionNumber ." has been approved.
 
         ";
         
@@ -264,8 +265,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     }else if(isset($_POST['Decline'])){
         $appointmentID = $_POST['appoinmentID'];
         $customer_ID = $_POST['customer_ID'];
+        $transactionNumber = $_POST['transactionNumber'];
         $messageToCustomer = "
-        I hope this message finds you well. I wanted to express my sincere appreciation for your invitation/appointment request.Regrettably, due to scheduling conflicts, I'm unable to accept the appointment at this time.
+        I hope this message finds you well. I wanted to express my sincere appreciation for your invitation/appointment request.Regrettably, due to scheduling conflicts for transaction number ". $transactionNumber .", I'm unable to accept the appointment at this time.
         ";
         
         $isSuccess = $queryMethods->updateAppointmentStatus($appointmentID,'REJECTED');
@@ -278,31 +280,26 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
              echo
             "<script>
                const loader = document.querySelector('.loader');
-                function success() {
                 loader.classList.add('success');
-                }
-                setTimeout(() => success(), 1000);
-                setTimeout(() => window.location.href = '/CLINICAPPOINTMENTSYS/pages/approval_appointmentAdmin.php', 3000);
+                window.location.href = '/CLINICAPPOINTMENTSYS/pages/approval_appointmentAdmin.php';
             </script>";
             }
         else{
              echo
             "<script>
                const loader = document.querySelector('.loader');
-                function fail() {
                 loader.classList.add('fail');
-                }
-                setTimeout(() => fail(), 1000);
-                setTimeout(() => window.location.href = '/CLINICAPPOINTMENTSYS/pages/approval_appointmentAdmin.php', 3000);
+                window.location.href = '/CLINICAPPOINTMENTSYS/pages/approval_appointmentAdmin.php';
             </script>";
         }
     }else if(isset($_POST['cancel'])){
         $appointmentID = $_POST['appointmentID'];
         $customer_ID = $_POST['customerID'];
+        $transactionNumber = $_POST['transac'];
 
 
         $messageToCustomer = "
-            Your appointment is successfully Cancelled.
+            Your appointment with a transaction number ". $transactionNumber ." is successfully Cancelled.
         ";
         
         $isSuccess = $queryMethods->updateAppointmentStatus($appointmentID,'Cancelled');

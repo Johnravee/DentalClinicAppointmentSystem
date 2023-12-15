@@ -39,7 +39,7 @@ $queryMethods = new selectQueries($conn);
             </div>
         </div>
 
-        <input type="text" id="searchInput" placeholder="Search appointments...">
+        <input type="text" id="searchInput" placeholder="Transaction #">
     </div>
 
     <div class="wrapper">
@@ -54,6 +54,7 @@ $queryMethods = new selectQueries($conn);
 
                 <div class="appointment-details">
                     <p id="transactionNumber"><strong>Transaction No. :</strong> '.$selectedData['transactionNumber'].'</p>
+                    <input value="'. $selectedData['transactionNumber'].'" name="transac" hidden/>
                     <p><strong>Date :</strong> '.$selectedData['datee'].'</p>
                     <p><strong>Time:</strong> '.$selectedData['Timee'].'</p>
                     <p><strong>Appointment Type :</strong> '.$selectedData['appointmentType'].'</p>

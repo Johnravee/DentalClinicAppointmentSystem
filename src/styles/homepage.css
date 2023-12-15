@@ -61,7 +61,7 @@ nav > ul > a{
     letter-spacing: 1px;
 }
 
-#logInBtn{
+#logInBtn,#userdashboardbtn{
     padding: 10px 20px;
     background-color: #8FDCF5;
     font-weight: bold;
@@ -70,6 +70,8 @@ nav > ul > a{
     border: none;
     cursor: pointer;
 }
+
+
 
 #logInBtn:hover{
     background-color: #72d0ef;

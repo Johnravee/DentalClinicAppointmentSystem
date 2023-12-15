@@ -36,12 +36,26 @@
                 <a href="#contactUs">
                     <li>CONTACT</li>
                 </a>
-                <a href="userLoginForm.php">
+                <a href="loginPanel.php" class="logbtn">
                     <li><button id="logInBtn">LOG IN</button></li>
                 </a>
+
+                <a href="userDashboard.php" class="userdashboardbtn">
+                    <li><button id="userdashboardbtn">Dashboard</button></li>
+                </a>
+
+
+                <?php
+                    session_start();
+
+                    if (isset($_SESSION['userID'])) echo '<script>document.querySelector(".logbtn").style.display = "none";</script>';   
+                    else echo '<script>document.querySelector(".userdashboardbtn").style.display = "none";</script>';
+                ?>
             </ul>
         </nav>
     </header>
+
+
 
     <main>
         <section class="headerContent" id="home">
@@ -296,5 +310,7 @@
         </section>
     </main>
 </body>
+
+
 
 </html>

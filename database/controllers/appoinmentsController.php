@@ -232,28 +232,20 @@ $queryMethods = new insertQueries($conn);
             $status = 'Pending';
             $isSuccess = $queryMethods->insertAppoinmentsData($userID, $appointedDate, $appointedTime, $transactionNumber, $status, $appointmentTypeModal, $Consultant);
 
-            if($isSuccess === true){
+             if($isSuccess){
                 echo
             "<script>
                const loader = document.querySelector('.loader');
-
-            
-                function success() {
                 loader.classList.add('success');
-                }
-                setTimeout(() => success(), 1000);
-                setTimeout(() => window.location.href = '/CLINICAPPOINTMENTSYS/pages/userAppointmentForm.php', 2300);
+                window.location.href = '/CLINICAPPOINTMENTSYS/pages/userPendingAppointments.php'
             </script>";
             
             }else{
                  echo
             "<script>
                const loader = document.querySelector('.loader');
-                function fail() {
                 loader.classList.add('fail');
-                }
-                setTimeout(() => fail(), 2000);
-                setTimeout(() => window.location.href = '/CLINICAPPOINTMENTSYS/pages/userAppointmentForm.php', 2000);
+                window.location.href = '/CLINICAPPOINTMENTSYS/pages/userAppointmentForm.php';
             </script>";
             }
 

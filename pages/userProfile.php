@@ -40,7 +40,7 @@ require_once('../database/models/queryClass.php');
     <header>
         <div class="logoPageTitle">
 
-            <img src="../src/images/logo.png" alt="DentalClinicLogo" class="input" readonly />
+            <img src="../src/images/logo.png" alt="DentalClinicLogo" readonly />
 
 
             <h1>My Profile</h1>
@@ -91,8 +91,6 @@ require_once('../database/models/queryClass.php');
                     <label for="fileInputBtn">Select Profile</label>
                     <input class="FileInputBtn" type="file" name="profileImg" accept="image/jpg, image/jpeg, image/png"
                         hidden id="fileInputBtn" class="input" readonly />
-
-                    <a href="logOut.php"><button id="logOutBtn" type="button">Logout</button></a>
                 </div>
             </aside>
 

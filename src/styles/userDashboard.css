@@ -8,7 +8,7 @@
     --primary: #3B71CA;
     --secondary: #9FA6B2;
     --success: #14A44D;
-    --danger: #DC4C64;
+    --danger: #e7304e;
     --warning: #E4A11B;
     --info: #54B4D3;
     --light: #FBFBFB;
@@ -24,7 +24,7 @@ main{
 }
 
 .sideBar{
-    background-color: var(--info);
+    background-color: #6d8fc6;
     height: 100%;
     width: 20%;
     display: flex;
@@ -42,8 +42,8 @@ main{
 }
 
 .profile > img{
-    width: 200px;
-    height: 200px;
+    width: 120px;
+    height: 120px;
     margin: 10% 0;
     border-radius: 50%;
     outline: 5px solid var(--light);
@@ -57,11 +57,10 @@ main{
 
 .navBtn{
     width: 100%;
-    height: 40%;
+    height: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
-    justify-content: space-evenly;
 }
 
 .navBtn > a {
@@ -73,26 +72,27 @@ main{
 }
 
 .navBtn > a > button{
-    width: 80%;
-    padding: 15px;
+    width: 50%;
+    padding: 10px;
     border-radius: 10px;
     font-size: 1rem;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    background-color: var(--info);
+    background-color: #efeeee;
     color: var(--dark);
     cursor: pointer;
     font-weight: bold;
     letter-spacing: 1px;
     transition: .3s;
+    margin: 10px;
 }
 
 
 
 
 .navBtn>a>button:hover{
-    background-color: var(--primary);
+    background-color: #ff881f;
     color: var(--light);
 }
 
@@ -128,9 +128,9 @@ main{
 .contentContainer{
     height: 100%;
     width: 80%;
-    background-image: url(../images/bgbaner.png);
+
     background-size: cover;
-    background-color: #54b3d362;
+    background-color: #efeeee;
     object-fit: cover;
     display: flex;
     justify-content: center;
@@ -146,7 +146,7 @@ main{
     align-items: center;
 }
 
-.logo > img{
+.logo > a img{
     width: 200px;
     height: 200px;
 }
@@ -181,18 +181,24 @@ main{
 }
 
 .messages{
-    height: 300px;
-    width: 300px;
+    height: 80%;
+    width: 50%;
     background-color: var(--light);
     position: absolute;
-    left: 80%;
-    overflow-y: auto;
+    left: 55%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     border-radius: 8px;
-    top: 15%;
+    display: none;
     align-items: center;
     flex-direction: column;
     padding: 20px;
-    display: none;
+}
+
+.mails{
+    width: 100%;
+    overflow-y: auto;
+    padding: 20px;
 }
 
 .message{
@@ -228,11 +234,11 @@ main{
 }
 
 #letter{
-    word-wrap: break-word;
+   
     height: 100%;
     background-color: #ffff;
     padding: 10px;
-    margin: 5px;
+    width: 100%;
 }
 
 #from,#dateTime{
@@ -243,6 +249,7 @@ main{
 
 .toggleMessages{
     display: flex;
+    align-items: center;
 }
 
 .content{
@@ -254,7 +261,7 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 40%;
+    height: 30%;
     width: 100%;
 }
 
@@ -263,6 +270,7 @@ main{
     width: 100%;
     cursor: pointer;
     transition: .3s;
+    border: 2px solid #ffff;
 }
 
 .btns a>button:hover{
@@ -272,17 +280,19 @@ main{
 #midBtn{
     border-left: none;
     border-right: none;
-    background-color:rgb(96, 148, 231)
+    background-color: #ff881f;
 }
 
 #startBtn{
     border-right: none;
-    background-color: var(--primary);
+    background-color: #ff881f;
+    border-radius: 10px 0 0 10px;
 }
 
 #endBtn{
     border-left: none;
-    background-color: var(--info);
+    background-color: #ff881f;
+    border-radius: 0 10px 10px 0;
 }
 
 .btns a>button> i {
@@ -295,7 +305,7 @@ font-size: 1rem;
 }
 
 .tag{
-    height: 40%;
+    height: 50%;
     width: 100%;
     padding: 0 0 0 70px;
     color: var(--light);
@@ -304,11 +314,16 @@ font-size: 1rem;
 
 .tag > small{
     font-size: 1rem;
+    color: black;
+    font-size: larger;
+    font-weight: bolder;
 }
 
 .tag > h2{
-    font-size: 4rem;
+    font-size: 3rem;
     width: 50%;
+    color: black;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .footer{
@@ -317,17 +332,18 @@ font-size: 1rem;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    background-color: #3b72ca86;
+    background-color: #d2d2d2;
 }
 
 .description{
     width: 40%;
-    color: var(--light);
+    color: black;
 }
 
 .description > h3{
     font-size: 2rem;
     padding: 10px 0;
+    color: black;
 }
 
 .description > small{
@@ -353,6 +369,61 @@ font-size: 1rem;
 }
 
 .appoinmentBtn a>button:hover{
-    background-color: var(--success);
+    background-color: #ff881f;
     color: var(--light);
 }
+
+.deleteBTN{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: end;
+    background-color: var(--light);
+    z-index: 1;
+}
+
+#deleteMessages{
+    align-self: flex-end;
+    position: fixed;
+    background-color: var(--danger);
+    border: none;
+    top: 90%;
+    transform: translate(-50%, -50%);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    color: var(--light);
+    cursor: pointer;
+    transition: .5s;
+    display: none;
+}
+
+#deleteMessages:hover{
+    background-color: #cf0b2c;
+}
+
+.messages > h3{
+    color: #cacaca;
+    position: fixed;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    letter-spacing: 3px;
+    display: none;
+}
+
+#closeMessageModal{
+    position: absolute;
+    left: 90%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+
+    background-color: transparent;
+}
+
+

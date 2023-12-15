@@ -308,16 +308,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $encryptedPassword = password_hash($password, PASSWORD_DEFAULT);
             $userAccountInserted = $queryMethods->insertAccountsData($table, $email, $firstName, $middleName, $surName, $contact, $birthDate, $gender, null, $address, $encryptedPassword, $accountType);
 
-            if($userAccountInserted === true) 
+            if($userAccountInserted) 
             {
                   echo
             "<script>
                const loader = document.querySelector('.loader');
-                function success() {
                 loader.classList.add('success');
-                }
-                setTimeout(() => success(), 3000);
-                setTimeout(() => window.location.href = '/CLINICAPPOINTMENTSYS/pages/userLoginForm.php', 5000);
+                window.location.href = '/CLINICAPPOINTMENTSYS/pages/userLoginForm.php';
             </script>";
             }
             else
@@ -325,11 +322,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                  echo
             "<script>
                const loader = document.querySelector('.loader');
-                function fail() {
                 loader.classList.add('fail');
-                }
-                setTimeout(() => fail(), 3000);
-                setTimeout(() => window.location.href = '/CLINICAPPOINTMENTSYS/pages/registrationForm.php', 5000);
+                window.location.href = '/CLINICAPPOINTMENTSYS/pages/registrationForm.php';
             </script>";
             }
 

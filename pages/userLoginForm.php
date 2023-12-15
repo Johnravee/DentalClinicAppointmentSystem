@@ -56,7 +56,6 @@ if(isset($_SESSION['userID'])){
                 <button type="submit" id="submit">LOGIN</button>
 
                 <p><a href="registrationForm.php">Create an account?</a></p>
-                <p style="padding: 10px 0;"><a href="adminLoginForm.php">Login as administrator?</a></p>
             </form>
         </div>
 

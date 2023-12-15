@@ -6,6 +6,7 @@ const Acctypes = document.querySelectorAll(".Acctype");
 
 
 
+pass.addEventListener('input',()=> checkPasswordStrength(pass));
 confirmPass.addEventListener('input', checkMatchedPassword);
 
 //Check if password is matched 
@@ -49,3 +50,25 @@ Acctypes.forEach(Acctype => {
             );
     });
 });
+
+
+
+ 
+
+
+// regex Security
+function checkPasswordStrength(pass){
+    if (pass.value.length > 15) {
+        document.querySelector('small').innerText = "Password is too lengthy";
+        document.querySelector('small').style.color = '#DC4C64';
+    } else if (pass.value.length < 8) {
+        document.querySelector('small').innerText = "Password is too short";
+        document.querySelector('small').style.color = '#DC4C64';
+    } else {
+        let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&])[A-Za-z\d@.#$!^%*?&]{8,15}$/;
+
+        regex.test(pass.value) ? 
+            (document.querySelector('small').innerText = "Password is strong", document.querySelector('small').style.color = '#14A44D') : 
+            (document.querySelector('small').innerText = "Password is weak", document.querySelector('small').style.color = '#DC4C64');
+    }
+}

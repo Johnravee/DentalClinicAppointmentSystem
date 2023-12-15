@@ -49,7 +49,7 @@ $queryMethods = new selectQueries($conn);
                 </div>
             </div>
 
-            <input type="text" id="searchInput" placeholder="Search appointments...">
+            <input type="text" id="searchInput" placeholder="Transaction #">
         </div>
 
         <div class="tableContent">

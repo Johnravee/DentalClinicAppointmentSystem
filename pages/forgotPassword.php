@@ -35,7 +35,7 @@ else if(isset($_SESSION['adminID'])){
                     <h2 class="ForgotPassword">Forgot Password</h2>
                     <div class="form-group">
                         <label for="email">Enter Email</label>
-                        <input type="email" name="email" id="email" />
+                        <input type="email" name="email" id="email" required />
                     </div>
 
                     <button type="submit" name="emailSubmit">Submit</button>
@@ -49,10 +49,10 @@ else if(isset($_SESSION['adminID'])){
                     <h2 class="CreateYourNewPassword">Create New Password</h2>
                     <div class="form-group">
                         <label for="newPass">New password</label>
-                        <input type="password" name="newPass" id="newPass" />
+                        <input type="password" name="newPass" id="newPass" required />
 
                         <label for="cpass">Confirm password</label>
-                        <input type="password" id="cpass" name="confirmNewPass" />
+                        <input type="password" id="cpass" name="confirmNewPass" required />
                     </div>
 
                     <button type="submit" name="updatePasswordForm">Submit</button>

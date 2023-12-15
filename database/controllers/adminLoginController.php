@@ -216,9 +216,6 @@
 require_once('../models/queryClass.php');
 require_once("../connection/database.php");
 
-
-
-
 $queryMethods = new selectQueries($conn);
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -230,25 +227,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         $isSuccess=  $queryMethods->adminLogin($employeeID, $password);
             
-            if($isSuccess === true){
+            if($isSuccess){
                   echo
             "<script>
                const loader = document.querySelector('.loader');
-                function success() {
-                loader.classList.add('success');
-                }
-                setTimeout(() => success(), 1000);
-                setTimeout(() => window.location.href = '/CLINICAPPOINTMENTSYS/pages/adminDashboard.php', 2300);
+                    loader.classList.add('success');
+                    window.location.href = '/CLINICAPPOINTMENTSYS/pages/adminDashboard.php';
             </script>";
             }else{
                  echo
             "<script>
                const loader = document.querySelector('.loader');
-                function fail() {
-                loader.classList.add('fail');
-                }
-                setTimeout(() => fail(), 3000);
-                setTimeout(() => window.location.href = '/CLINICAPPOINTMENTSYS/pages/adminLoginForm.php', 5000);
+                    loader.classList.add('fail');
+                    window.location.href = '/CLINICAPPOINTMENTSYS/pages/adminLoginForm.php';
             </script>";
             }
     }catch(Exception $e){
