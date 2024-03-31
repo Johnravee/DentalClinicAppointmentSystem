@@ -2,7 +2,7 @@
 session_start();
 // CHECK IF SESSION IS SET 
 if(isset($_SESSION['userID'])){
-    header("Location: /CLINICAPPOINTMENTSYS/pages/userDashboard.php");
+    header("Location: /DentalClinicAppointmentSystem/pages/userDashboard.php");
 }
 
 ?>

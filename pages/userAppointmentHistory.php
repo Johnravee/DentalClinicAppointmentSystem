@@ -5,7 +5,7 @@ require_once('../database/connection/database.php');
 $queryMethods = new selectQueries($conn);
 // CHECK IF SESSION IS SET 
 if(!isset($_SESSION['userID'])){
-    header("Location: /CLINICAPPOINTMENTSYS/pages/userLoginForm.php");
+    header("Location: /DentalClinicAppointmentSystem/pages/userLoginForm.php");
 }
 ?>
 
@@ -60,7 +60,7 @@ if(!isset($_SESSION['userID'])){
                         foreach($selectedDatas as $selectedData){
                             echo '<tr class="tableRowData">';
                             echo '<td id="transactionNumbers">'.$selectedData['transactionNumber'].'</td>';
-                            echo '<td>'.$selectedData['datee'].'</td>';
+                            echo '<td>'.$selectedData['Datee'].'</td>';
                             echo '<td>'.$selectedData['Timee'].'</td>';
                             echo '<td>'.$selectedData['appointmentType'].'</td>';
                             echo '<td>'.$selectedData['Consultant'].'</td>';

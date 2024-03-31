@@ -52,7 +52,7 @@ require_once('../database/models/queryClass.php');
     </header>
 
     <main>
-        <form action="/CLINICAPPOINTMENTSYS/database/controllers/updateProfileController.php"
+        <form action="/DentalClinicAppointmentSystem/database/controllers/updateProfileController.php"
             enctype="multipart/form-data" method="post">
             <aside>
                 <div class="profileImg">

@@ -121,7 +121,7 @@ $queryMethods = new selectQueries($conn);
                                     <h3 class="card-title">Approved / Disapproved</h3>
                                 </div>
                                 <div class="card-body col-md-12">
-                                    <form action="/CLINICAPPOINTMENTSYS/database/controllers/updateAppointmentStatus.php" method="post">
+                                    <form action="/DentalClinicAppointmentSystem/database/controllers/updateAppointmentStatus.php" method="post">
                                         <div class="col-md-9">
                                             <h4 class="text-center" style="font-color: #003556;">New meeting booked!
                                             </h4>
@@ -171,7 +171,7 @@ $queryMethods = new selectQueries($conn);
                                 <label for="staticEmail" class="col-sm-4 col-form-label">Date</label>
                                 <div class="col-sm-8">
                                     <input type="text" name="date" readonly class="form-control-plaintext"
-                                        value="'.$selectedData['datee'].'">
+                                        value="'.$selectedData['Datee'].'">
                                 </div>
                             </div>
                             <hr />

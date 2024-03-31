@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loading..</title>
-    <link rel="shortcut icon" href="/CLINICAPPOINTMENTSYS/src/images/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/DentalClinicAppointmentSystem/src/images/logo.png" type="image/x-icon">
 </head>
 
 <style>
@@ -247,7 +247,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                 loader.classList.add('success');
                 }
                 setTimeout(() => success(), 1000);
-                setTimeout(() => window.location.href = '/CLINICAPPOINTMENTSYS/pages/approval_appointmentAdmin.php', 1500);
+                setTimeout(() => window.location.href = '/DentalClinicAppointmentSystem/pages/approval_appointmentAdmin.php', 1500);
             </script>";
             }
         else{
@@ -258,7 +258,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                 loader.classList.add('fail');
                 }
                 setTimeout(() => fail(), 1000);
-                setTimeout(() => window.location.href = '/CLINICAPPOINTMENTSYS/pages/approval_appointmentAdmin.php', 1500);
+                setTimeout(() => window.location.href = '/DentalClinicAppointmentSystem/pages/approval_appointmentAdmin.php', 1500);
             </script>";
         }
         
@@ -281,7 +281,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             "<script>
                const loader = document.querySelector('.loader');
                 loader.classList.add('success');
-                window.location.href = '/CLINICAPPOINTMENTSYS/pages/approval_appointmentAdmin.php';
+                window.location.href = '/DentalClinicAppointmentSystem/pages/approval_appointmentAdmin.php';
             </script>";
             }
         else{
@@ -289,7 +289,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             "<script>
                const loader = document.querySelector('.loader');
                 loader.classList.add('fail');
-                window.location.href = '/CLINICAPPOINTMENTSYS/pages/approval_appointmentAdmin.php';
+                window.location.href = '/DentalClinicAppointmentSystem/pages/approval_appointmentAdmin.php';
             </script>";
         }
     }else if(isset($_POST['cancel'])){
@@ -316,7 +316,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                 loader.classList.add('success');
                 }
                 setTimeout(() => success(), 1000);
-                setTimeout(() => window.location.href = '/CLINICAPPOINTMENTSYS/pages/userPendingAppointments.php', 3000);
+                setTimeout(() => window.location.href = '/DentalClinicAppointmentSystem/pages/userPendingAppointments.php', 3000);
             </script>";
             }
         else{
@@ -327,7 +327,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                 loader.classList.add('fail');
                 }
                 setTimeout(() => fail(), 1000);
-                setTimeout(() => window.location.href = '/CLINICAPPOINTMENTSYS/pages/userPendingAppointments.php', 3000);
+                setTimeout(() => window.location.href = '/DentalClinicAppointmentSystem/pages/userPendingAppointments.php', 3000);
             </script>";
         }
         

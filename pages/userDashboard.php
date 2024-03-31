@@ -126,7 +126,7 @@ $userID = $_SESSION['userID'];
                             $messages = $queryMethods->getMessages($userID);
                             if (!empty($messages)) {
                                 foreach ($messages as $message) {
-                                    echo '<form class = "deleteForm" action="/CLINICAPPOINTMENTSYS/database/controllers/deleteMessagesController.php" method="post">';
+                                    echo '<form class = "deleteForm" action="/DentalClinicAppointmentSystem/database/controllers/deleteMessagesController.php" method="post">';
                                     echo '<div class="message">';
                                     echo '<input name ="userID" value ="'.$userID.'" hidden/>';
                                     echo '<p class="subject"><span class="subjectTittle" style="text-transform:uppercase;">' . $message['subjectt'] . '</span> <i class="bi bi-envelope-fill" id="envelop"></i></p>';

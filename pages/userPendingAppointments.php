@@ -49,13 +49,13 @@ $queryMethods = new selectQueries($conn);
 
             foreach($selectedDatas as $selectedData){
                 echo '
-                <form action="/CLINICAPPOINTMENTSYS/database/controllers/updateAppointmentStatus.php" method="post">
+                <form action="/DentalClinicAppointmentSystem/database/controllers/updateAppointmentStatus.php" method="post">
                  <h1>Pending Appointment </h1>
 
                 <div class="appointment-details">
                     <p id="transactionNumber"><strong>Transaction No. :</strong> '.$selectedData['transactionNumber'].'</p>
                     <input value="'. $selectedData['transactionNumber'].'" name="transac" hidden/>
-                    <p><strong>Date :</strong> '.$selectedData['datee'].'</p>
+                    <p><strong>Date :</strong> '.$selectedData['Datee'].'</p>
                     <p><strong>Time:</strong> '.$selectedData['Timee'].'</p>
                     <p><strong>Appointment Type :</strong> '.$selectedData['appointmentType'].'</p>
                     <p><strong>Consultant :</strong> '.$selectedData['Consultant'].'</p>

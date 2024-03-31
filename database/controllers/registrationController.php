@@ -260,7 +260,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 loader.classList.add('success');
                 }
                 setTimeout(() => success(), 1000);
-                setTimeout(() => window.location.href = '/CLINICAPPOINTMENTSYS/pages/adminLoginForm.php', 2300);
+                setTimeout(() => window.location.href = '/DentalClinicAppointmentSystem/pages/adminLoginForm.php', 2300);
             </script>";
             }
             else
@@ -272,7 +272,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 loader.classList.add('fail');
                 }
                 setTimeout(() => fail(), 3000);
-                setTimeout(() => window.location.href = '/CLINICAPPOINTMENTSYS/pages/adminLoginForm.php', 5000);
+                setTimeout(() => window.location.href = '/DentalClinicAppointmentSystem/pages/adminLoginForm.php', 5000);
             </script>";
             }
 
@@ -314,21 +314,24 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             "<script>
                const loader = document.querySelector('.loader');
                 loader.classList.add('success');
-                window.location.href = '/CLINICAPPOINTMENTSYS/pages/userLoginForm.php';
+                window.location.href = '/DentalClinicAppointmentSystem/pages/userLoginForm.php';
             </script>";
             }
             else
             {
+
+                // Yung mga redirection link may error
+                
                  echo
             "<script>
                const loader = document.querySelector('.loader');
                 loader.classList.add('fail');
-                window.location.href = '/CLINICAPPOINTMENTSYS/pages/registrationForm.php';
+                window.location.href = '/DentalClinicAppointmentSystem/pages/registrationForm.php';
             </script>";
             }
 
         }catch(Exception $e){
-            throw new Exception("Failed to insert data into table");
+            echo $e->getMessage();
         }
     
     }

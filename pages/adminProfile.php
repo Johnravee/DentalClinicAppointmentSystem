@@ -50,7 +50,7 @@ require_once('../database/models/queryClass.php');
     </header>
 
     <main>
-        <form action="/CLINICAPPOINTMENTSYS/database/controllers/updateProfileController.php"
+        <form action="/DentalClinicAppointmentSystem/database/controllers/updateProfileController.php"
             enctype="multipart/form-data" method="post">
             <aside>
                 <div class="profileImg">
@@ -140,7 +140,7 @@ require_once('../database/models/queryClass.php');
                         <div class="formGroup">
                             <label for="address">ADDRESS</label>
                             <input id="address" type="text" name="address" class="input"
-                                value="<?php echo $rows['addresss'] ?>" readonly />
+                                value="<?php echo $rows['address'] ?>" readonly />
                         </div>
 
 

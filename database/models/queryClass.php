@@ -16,24 +16,26 @@ class insertQueries{
         try{
             if($tableName === 'adminaccounts')
             {
-                $adminAccountInsertData = "INSERT INTO $tableName (email, firstName, middleName, surName, contact, birthDate, gender, employeeID, addresss, passwords, account_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                $adminAccountInsertData = "INSERT INTO $tableName (email, firstName, middleName, surName, contact, birthDate, gender, employeeID, address, passwords, account_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 $query = $this->db->prepare($adminAccountInsertData);
                 $query->bind_param('sssssssssss',$email, $firstName, $middleName, $surName, $contact, $birthDate, $gender, $employeeID, $addresses, $password, $accountType);
             
                 if($query->execute()) return true;
             }
             else if($tableName === 'useraccounts'){
-                 $userAccountInsertData = "INSERT INTO $tableName (email, firstName, middleName, surName, contact, gender, birthDate, addresss, passwords, account_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                  $userAccountInsertData = "INSERT INTO $tableName (email, firstName, middleName, surName, contact, gender, birthDate, addresss, passwords, account_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 $query = $this->db->prepare($userAccountInsertData);
                 $query->bind_param('ssssssssss', $email, $firstName, $middleName, $surName, $contact, $gender, $birthDate, $addresses, $password, $accountType);
 
-                if($query->execute()) return true;
+                if ($query->execute()) {
+                    return true;
+                }
             }
             
 
-        }catch(Exception){
-            throw new Exception("QUERY CLASS FAILED INSERTION");
-        }
+        }catch(Exception $e){
+                echo $e->getMessage() .'';  
+        }   
         
     }
 
@@ -43,7 +45,7 @@ class insertQueries{
         
         try{
             
-            $insertAppoinmentData = "INSERT INTO appointments (customer_ID, datee, Timee, Consultant,transactionNumber, Statuss, appointmentType) VALUES(?, ?, ?, ?, ?, ?, ?)";
+            $insertAppoinmentData = "INSERT INTO appointments(customer_ID, Datee, Timee, Consultant,transactionNumber, Statuss, appointmentType) VALUES(?, ?, ?, ?, ?, ?, ?)";
 
             $query = $this->db->prepare($insertAppoinmentData);
             $query->bind_param('sssssss', $customer_ID, $date, $time, $Consultant, $transactionNumber, $status, $appointmentType); 
@@ -52,8 +54,8 @@ class insertQueries{
                 
                 return true;
             }
-        }catch(Exception){
-            throw new Exception("FAILED TO INSERT APPOINTMENT DATA");
+        }catch(Exception $e){
+           echo $e->getMessage();
         }
 
     }
@@ -351,8 +353,8 @@ class updateQuries extends insertQueries{
 
 
             
-        }catch(Exception){
-            throw new Exception("FAILED TO UPDATE YOUR PROFILE");
+        }catch(Exception $e){
+            echo $e->getMessage();
         }
 
 
@@ -363,13 +365,13 @@ class updateQuries extends insertQueries{
 
          // IF NOT EMPTY RUN THE STATEMENT
             if(!empty($profileImg)){
-                $updateAdminProfile = "UPDATE adminaccounts SET email = '$email' , profileImage = '$profileImg', firstName = '$firstName', middleName = '$middleName', surName = '$surName', contact = '$contact', birthDate = '$birthDate', addresss = '$address' WHERE adProfile_ID = $adminID";
+                $updateAdminProfile = "UPDATE adminaccounts SET email = '$email' , profileImage = '$profileImg', firstName = '$firstName', middleName = '$middleName', surName = '$surName', contact = '$contact', birthDate = '$birthDate', address = '$address' WHERE adProfile_ID = $adminID";
                 $query = $this->db->query($updateAdminProfile);
                 if($query){
                     return true;
                 }
             }else{
-                $updateAdminProfile = "UPDATE adminaccounts SET email = ?, firstName = ?, middleName = ?, surName = ?, contact = ?, birthDate = ?, addresss = ? WHERE adProfile_ID   = ?";
+                $updateAdminProfile = "UPDATE adminaccounts SET email = ?, firstName = ?, middleName = ?, surName = ?, contact = ?, birthDate = ?, address = ? WHERE adProfile_ID   = ?";
                 $query = $this->db->prepare($updateAdminProfile);
                 $query->bind_param('sssssssi',$email, $firstName, $middleName, $surName, $contact, $birthDate, $address, $adminID);
                if($query->execute()){

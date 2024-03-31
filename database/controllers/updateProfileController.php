@@ -27,7 +27,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                if($isSuccess){
                 $_SESSION['firstname'] = $firstName;
                 $_SESSION['surname'] = $surName;
-                header('Location: /CLINICAPPOINTMENTSYS/pages/userProfile.php');
+                header('Location: /DentalClinicAppointmentSystem/pages/userProfile.php');
                 return;
                }
             }else{   
@@ -35,7 +35,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
               if($isSuccess){
                 $_SESSION['firstname'] = $firstName;
                 $_SESSION['surname'] = $surName;
-                header('Location: /CLINICAPPOINTMENTSYS/pages/userProfile.php');
+                header('Location: /DentalClinicAppointmentSystem/pages/userProfile.php');
                 return;
                }
             }
@@ -58,7 +58,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
               if($isSuccess){
                 $_SESSION['firstname'] = $firstName;
                 $_SESSION['surname'] = $surName;
-                header("Location: /CLINICAPPOINTMENTSYS/pages/adminProfile.php");
+                header("Location: /DentalClinicAppointmentSystem/pages/adminProfile.php");
                 return;
               }
 
@@ -67,15 +67,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
               if($isSuccess){
                 $_SESSION['firstname'] = $firstName;
                 $_SESSION['surname'] = $surName;
-                header("Location: /CLINICAPPOINTMENTSYS/pages/adminProfile.php");
+                header("Location: /DentalClinicAppointmentSystem/pages/adminProfile.php");
                 return;
               }
             }
         }
 
         
-    }catch(Exception){
-        throw new Exception("FAILED TO INSERT UPDATED VALUES");
+    }catch(Exception $e){
+        throw new Exception($e->getMessage());
       
     }
 

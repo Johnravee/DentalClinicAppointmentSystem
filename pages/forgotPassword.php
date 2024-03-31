@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(isset($_SESSION['userID'])){
-    header("Location: /CLINICAPPOINTMENTSYS/pages/userDashboard.php");
+    header("Location: /DentalClinicAppointmentSystem/pages/userDashboard.php");
 }
 else if(isset($_SESSION['adminID'])){
     header("Location: adminDashboard.php");
@@ -111,7 +111,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         $isSuccess = $updateQueryMethods->updatePassword($encryptedPassword);
 
         if($isSuccess){
-            header('Location: \CLINICAPPOINTMENTSYS\pages\userLoginForm.php');
+            header('Location: \DentalClinicAppointmentSystem\pages\userLoginForm.php');
         }
         
     }

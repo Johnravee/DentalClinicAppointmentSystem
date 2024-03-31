@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Submitting appoinment..</title>
-    <link rel="shortcut icon" href="/CLINICAPPOINTMENTSYS/src/images/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/DentalClinicAppointmentSystem/src/images/logo.png" type="image/x-icon">
 </head>
 
 <style>
@@ -237,21 +237,21 @@ $queryMethods = new insertQueries($conn);
             "<script>
                const loader = document.querySelector('.loader');
                 loader.classList.add('success');
-                window.location.href = '/CLINICAPPOINTMENTSYS/pages/userPendingAppointments.php'
+                window.location.href = '/DentalClinicAppointmentSystem/pages/userPendingAppointments.php'
             </script>";
             
             }else{
-                 echo
-            "<script>
-               const loader = document.querySelector('.loader');
-                loader.classList.add('fail');
-                window.location.href = '/CLINICAPPOINTMENTSYS/pages/userAppointmentForm.php';
-            </script>";
+            //      echo
+            // "<script>
+            //    const loader = document.querySelector('.loader');
+            //     loader.classList.add('fail');
+            //     window.location.href = '/DentalClinicAppointmentSystem/pages/userAppointmentForm.php';
+            // </script>";
             }
 
 
         }catch(Exception $e){
-            throw new Exception('FAILED TO QUERY');
+            echo $e->getMessage();
         }
     }
 

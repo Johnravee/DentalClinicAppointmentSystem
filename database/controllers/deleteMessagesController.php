@@ -9,7 +9,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     $isSuccess = $queryMethods->deleteData("customer_ID", null, $userID, "messages");
 
-    if($isSuccess) header('Location: /CLINICAPPOINTMENTSYS/pages/userDashboard.php');
+    if($isSuccess) header('Location: /DentalClinicAppointmentSystem/pages/userDashboard.php');
 }
 
 

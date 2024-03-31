@@ -69,7 +69,7 @@ $queryMethods = new selectQueries($conn);
 
              foreach ($selectedData as $row) {
                     echo "<tr>";
-                    echo "<td>" . $row['datee'] . "</td>";
+                    echo "<td>" . $row['Datee'] . "</td>";
                     echo "<td class='transactionNumbers'>" . $row['transactionNumber'] . "</td>";
                     echo "<td>" . $row['Timee'] . "</td>";
                     echo "<td>" . $row['Consultant'] . "</td>";

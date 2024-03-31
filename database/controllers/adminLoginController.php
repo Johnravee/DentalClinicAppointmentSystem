@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logging in..</title>
-    <link rel="shortcut icon" href="/CLINICAPPOINTMENTSYS/src/images/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/DentalClinicAppointmentSystem/src/images/logo.png" type="image/x-icon">
 </head>
 
 <style>
@@ -232,14 +232,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             "<script>
                const loader = document.querySelector('.loader');
                     loader.classList.add('success');
-                    window.location.href = '/CLINICAPPOINTMENTSYS/pages/adminDashboard.php';
+                    window.location.href = '/DentalClinicAppointmentSystem/pages/adminDashboard.php';
             </script>";
             }else{
                  echo
             "<script>
                const loader = document.querySelector('.loader');
                     loader.classList.add('fail');
-                    window.location.href = '/CLINICAPPOINTMENTSYS/pages/adminLoginForm.php';
+                    window.location.href = '/DentalClinicAppointmentSystem/pages/adminLoginForm.php';
             </script>";
             }
     }catch(Exception $e){
